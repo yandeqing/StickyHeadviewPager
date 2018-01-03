@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.feeling.MainActivity">
 
+    <com.liaoinstan.springview.widget.SpringView
+        android:id="@+id/springView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <com.feeling.stickylayout.StickyLayout
         android:id="@+id/stickyLayout"
         android:layout_width="match_parent"
@@ -67,5 +72,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.feeling.stickylayout.StickyLayout>
-
+    </com.liaoinstan.springview.widget.SpringView>
 </LinearLayout>

@@ -14,12 +14,18 @@ import android.view.ViewGroup;
 import com.feeling.stickylayout.ScrollHelper;
 import com.feeling.stickylayout.StickyLayout;
 import com.feeling.stickylayout.R;
+import com.liaoinstan.springview.container.AliHeader;
+import com.liaoinstan.springview.container.DefaultFooter;
+import com.liaoinstan.springview.container.DefaultHeader;
+import com.liaoinstan.springview.container.RotationHeader;
+import com.liaoinstan.springview.widget.SpringView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SpringView mSpringView;
     private StickyLayout mStickyLayout;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
@@ -40,6 +46,24 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPageAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
+        mSpringView = findViewById(R.id.springView);
+        mSpringView.setHeader(new AliHeader(this));
+        mSpringView.setListener(new SpringView.OnFreshListener() {
+            @Override
+            public void onRefresh() {
+                mSpringView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSpringView.onFinishFreshAndLoad();
+                    }
+                }, 1500);
+            }
+
+            @Override
+            public void onLoadmore() {
+
+            }
+        });
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -53,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 mTabLayout.setupWithViewPager(mViewPager);
                 mViewPager.setCurrentItem(0);
             }
-        }, 3000);
+        }, 1000);
     }
 
     class PageAdapter extends FragmentPagerAdapter {
