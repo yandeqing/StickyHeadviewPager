@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.feeling.stickylayout"
+        applicationId "com.yandeqing.stickylayout"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -31,4 +31,5 @@ dependencies {
     compile 'com.github.hackware1993:MagicIndicator:1.5.0'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
 
+    androidTestCompile 'junit:junit:4.12'
 }

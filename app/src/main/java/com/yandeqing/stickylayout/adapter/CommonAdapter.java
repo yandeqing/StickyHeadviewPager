@@ -1,4 +1,4 @@
-package com.yandeqing.adapter;
+package com.yandeqing.stickylayout.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
