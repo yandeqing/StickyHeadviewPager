@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
-import com.yandeqing.collapsed.CollapsedTextView;
+import com.yandeqing.stickylayout.collapsed.CollapsedTextView;
 import com.yandeqing.stickylayout.NavigatorHelper;
 import com.yandeqing.stickylayout.R;
 import com.yandeqing.stickylayout.ScrollHelper;

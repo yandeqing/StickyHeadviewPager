@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.yandeqing.adapter.CommonAdapter;
-import com.yandeqing.adapter.CommonViewHolder;
+import com.yandeqing.stickylayout.adapter.CommonAdapter;
+import com.yandeqing.stickylayout.adapter.CommonViewHolder;
 import com.yandeqing.stickylayout.R;
 import com.yandeqing.stickylayout.ScrollHelper;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

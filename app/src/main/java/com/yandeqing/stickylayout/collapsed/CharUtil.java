@@ -1,4 +1,4 @@
-package com.yandeqing.collapsed;
+package com.yandeqing.stickylayout.collapsed;
 
 /**
  * Created by zuber on 2017/9/21.

@@ -1,4 +1,4 @@
-package com.yandeqing.collapsed;
+package com.yandeqing.stickylayout.collapsed;
 
 import android.content.Context;
 import android.content.res.TypedArray;
