@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.feeling.MainActivity">
+    tools:context="com.yandeqing.MainActivity">
 
-    <com.liaoinstan.springview.widget.SpringView
-        android:id="@+id/springView"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartrefresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.feeling.stickylayout.StickyLayout
+    <com.yandeqing.stickylayout.StickyLayout
         android:id="@+id/stickyLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,55 +22,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#CCCCCC" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:gravity="center"
                 android:text="这里是广告1"
                 android:textSize="15dp" />
-
-            <View
+            <com.yandeqing.collapsed.CollapsedTextView
+                android:id="@+id/company_desctv"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#CCCCCC" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center"
-                android:text="这里是广告2"
-                android:textSize="15dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#CCCCCC" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center"
-                android:text="这里是广告3"
-                android:textSize="15dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#CCCCCC" />
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:textColor="#484848"
+                android:textSize="12sp"
+                android:visibility="visible"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                app:collapsedLines="2"
+                app:collapsedText="收起"
+                app:expandedText="查看更多"
+                app:tipsClickable="true"
+                app:tipsUnderline="false" />
 
         </LinearLayout>
 
-
-        <android.support.design.widget.TabLayout
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#CCCCCC" />
+        <net.lucode.hackware.magicindicator.MagicIndicator
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="40dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#CCCCCC" />
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.feeling.stickylayout.StickyLayout>
-    </com.liaoinstan.springview.widget.SpringView>
+    </com.yandeqing.stickylayout.StickyLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.feeling.stickylayout;
+package com.yandeqing.stickylayout;
 
 import android.annotation.SuppressLint;
 import android.os.Build;

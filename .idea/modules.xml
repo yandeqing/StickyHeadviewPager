@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/StickyLayout.iml" filepath="$PROJECT_DIR$/StickyLayout.iml" />
-      <module fileurl="file://F:\Work\Feeling\StickyLayout\StickyLayout.iml" filepath="F:\Work\Feeling\StickyLayout\StickyLayout.iml" />
+      <module fileurl="file://F:/Work/Feeling/StickyLayout/StickyLayout.iml" filepath="F:/Work/Feeling/StickyLayout/StickyLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://F:\Work\Feeling\StickyLayout\app\app.iml" filepath="F:\Work\Feeling\StickyLayout\app\app.iml" />
+      <module fileurl="file://F:/Work/Feeling/StickyLayout/app/app.iml" filepath="F:/Work/Feeling/StickyLayout/app/app.iml" />
     </modules>
   </component>
 </project>

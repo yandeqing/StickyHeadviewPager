@@ -1,4 +1,4 @@
-package com.feeling.stickylayout;
+package com.yandeqing.stickylayout;
 
 import org.junit.Test;
 
