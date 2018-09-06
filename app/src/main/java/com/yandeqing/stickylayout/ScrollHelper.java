@@ -11,8 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ScrollView;
 
 public class ScrollHelper {
-
-    private int sysVersion;         //当前sdk版本，用于判断api版本
+    //当前sdk版本，用于判断api版本
+    private int sysVersion;
     private ScrollableContainer mCurrentScrollableContainer;
 
     public ScrollHelper() {
@@ -35,7 +35,9 @@ public class ScrollHelper {
     }
 
     public View getScrollableView() {
-        if (mCurrentScrollableContainer == null) return null;
+        if (mCurrentScrollableContainer == null) {
+            return null;
+        }
         return mCurrentScrollableContainer.getScrollableView();
     }
 

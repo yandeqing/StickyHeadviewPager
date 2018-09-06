@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -17,25 +16,64 @@ public class StickyLayout extends LinearLayout {
 
     private static final int DIRECTION_UP = 1;
     private static final int DIRECTION_DOWN = 2;
-
-    private int topOffset = 0;      //滚动的最大偏移量
+    //滚动的最大偏移量
+    private int topOffset = 0;
 
     private Scroller mScroller;
-    private int mTouchSlop;         //表示滑动的时候，手的移动要大于这个距离才开始移动控件。
-    private int mMinimumVelocity;   //允许执行一个fling手势动作的最小速度值
-    private int mMaximumVelocity;   //允许执行一个fling手势动作的最大速度值
-    private int sysVersion;         //当前sdk版本，用于判断api版本
-    private View mHeadView;         //需要被滑出的头部
-    private int mHeadHeight;        //滑出头部的高度
-    private int maxY = 0;           //最大滑出的距离，等于 mHeadHeight
-    private int minY = 0;           //最小的距离， 头部在最顶部
-    private int mCurY;              //当前已经滚动的距离
+    /**
+     * 表示滑动的时候，手的移动要大于这个距离才开始移动控件。
+     */
+    private int mTouchSlop;
+    /**
+     * 允许执行一个fling手势动作的最小速度值
+     */
+    private int mMinimumVelocity;
+    /**
+     * 允许执行一个fling手势动作的最大速度值
+     */
+    private int mMaximumVelocity;
+    /**
+     * 当前sdk版本，用于判断api版本
+     */
+    private int sysVersion;
+    /*
+     *需要被滑出的头部
+     */
+    private View mHeadView;
+    private int mHeadHeight;
+    /*
+     *滑出头部的高度
+     */
+    private int maxY = 0;
+    /*
+     *最大滑出的距离，等于 mHeadHeight
+     */
+    private int minY = 0;
+    /**
+     * 最小的距离， 头部在最顶部
+     */
+    private int mCurY;
+    /**
+     * 当前已经滚动的距离
+     */
     private VelocityTracker mVelocityTracker;
     private int mDirection;
     private int mLastScrollerY;
-    private boolean mDisallowIntercept;  //是否允许拦截事件
-    private boolean isClickHead;         //当前点击区域是否在头部
-    private OnScrollListener onScrollListener;   //滚动的监听
+    /**
+     * 是否允许拦截事件
+     */
+    private boolean mDisallowIntercept;
+
+    private boolean isClickHead;
+
+    /**
+     * 当前点击区域是否在头部
+     */
+    private OnScrollListener onScrollListener;
+
+    /**
+     * 滚动的监听
+     */
     private ScrollHelper mScrollable;
 
     public interface OnScrollListener {
@@ -64,9 +102,12 @@ public class StickyLayout extends LinearLayout {
         mScroller = new Scroller(context);
         mScrollable = new ScrollHelper();
         ViewConfiguration configuration = ViewConfiguration.get(context);
-        mTouchSlop = configuration.getScaledTouchSlop();   //表示滑动的时候，手的移动要大于这个距离才开始移动控件。
-        mMinimumVelocity = configuration.getScaledMinimumFlingVelocity(); //允许执行一个fling手势动作的最小速度值
-        mMaximumVelocity = configuration.getScaledMaximumFlingVelocity(); //允许执行一个fling手势动作的最大速度值
+        //表示滑动的时候，手的移动要大于这个距离才开始移动控件。
+        mTouchSlop = configuration.getScaledTouchSlop();
+        //允许执行一个fling手势动作的最小速度值
+        mMinimumVelocity = configuration.getScaledMinimumFlingVelocity();
+        //允许执行一个fling手势动作的最大速度值
+        mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
         sysVersion = Build.VERSION.SDK_INT;
     }
 
@@ -133,8 +174,11 @@ public class StickyLayout extends LinearLayout {
                 mScroller.abortAnimation();
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (mDisallowIntercept) break;
-                deltaY = mLastY - currentY; //连续两次进入move的偏移量
+                if (mDisallowIntercept) {
+                    break;
+                }
+                //连续两次进入move的偏移量
+                deltaY = mLastY - currentY;
                 mLastY = currentY;
                 if (shiftX > mTouchSlop && shiftX > shiftY) {
                     //水平滑动
@@ -157,9 +201,12 @@ public class StickyLayout extends LinearLayout {
                 break;
             case MotionEvent.ACTION_UP:
                 if (verticalScrollFlag) {
-                    mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity); //1000表示单位，每1000毫秒允许滑过的最大距离是mMaximumVelocity
-                    float yVelocity = mVelocityTracker.getYVelocity();  //获取当前的滑动速度
-                    mDirection = yVelocity > 0 ? DIRECTION_DOWN : DIRECTION_UP;  //下滑速度大于0，上滑速度小于0
+                    //1000表示单位，每1000毫秒允许滑过的最大距离是mMaximumVelocity
+                    mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
+                    //获取当前的滑动速度
+                    float yVelocity = mVelocityTracker.getYVelocity();
+                    //下滑速度大于0，上滑速度小于0
+                    mDirection = yVelocity > 0 ? DIRECTION_DOWN : DIRECTION_UP;
                     //根据当前的速度和初始化参数，将滑动的惯性初始化到当前View，至于是否滑动当前View，取决于computeScroll中计算的值
                     //这里不判断最小速度，确保computeScroll一定至少执行一次
                     mScroller.fling(0, getScrollY(), 0, -(int) yVelocity, 0, 0, -Integer.MAX_VALUE, Integer.MAX_VALUE);
@@ -216,15 +263,19 @@ public class StickyLayout extends LinearLayout {
                 // 手势向上划
                 if (isStickied()) {
                     //这里主要是将快速滚动时的速度对接起来，让布局看起来滚动连贯
-                    int distance = mScroller.getFinalY() - currY;    //除去布局滚动消耗的时间后，剩余的时间
-                    int duration = calcDuration(mScroller.getDuration(), mScroller.timePassed()); //除去布局滚动的距离后，剩余的距离
+                    int distance = mScroller.getFinalY() - currY;
+                    //除去布局滚动消耗的时间后，剩余的时间
+                    int duration = calcDuration(mScroller.getDuration(), mScroller.timePassed());
+                    //除去布局滚动的距离后，剩余的距离
                     mScrollable.smoothScrollBy(getScrollerVelocity(distance, duration), distance, duration);
                     //外层布局已经滚动到指定位置，不需要继续滚动了
                     mScroller.abortAnimation();
                     return;
                 } else {
-                    scrollTo(0, currY);  //将外层布局滚动到指定位置
-                    invalidate();        //移动完后刷新界面
+                    scrollTo(0, currY);
+                    //将外层布局滚动到指定位置
+                    invalidate();
+                    //移动完后刷新界面
                 }
             } else {
                 // 手势向下划，内部View已经滚动到顶了，需要滚动外层的View
