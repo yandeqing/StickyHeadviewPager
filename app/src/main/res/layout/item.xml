@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/smartrefresh_layout"
     android:layout_width="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/textview"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="70dp"/>
+        android:layout_height="200dp"/>
 </RelativeLayout>

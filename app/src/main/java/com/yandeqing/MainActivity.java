@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         collapsedTextView.setText("我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的我都去外地的 ");
 
         //设置 Header 为 Material风格
-        int color = getResources().getColor(R.color.cardview_dark_background);
         ClassicsHeader classicsHeader = new ClassicsHeader(this);
         smartRefreshLayout.setRefreshHeader(classicsHeader);
         smartRefreshLayout.setEnableLoadmore(false);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         titles.add("收藏的求租");
         titles.add("关注的人");
         NavigatorPagerAdapter mAdapter = new NavigatorPagerAdapter(getSupportFragmentManager(), mFragments, titles);
-        NavigatorHelper.addNavigatorContent(mViewPager, magicIndicator, titles, mAdapter);
+        NavigatorHelper.addNavigatorContent(mViewPager, magicIndicator, titles, mAdapter,mStickyLayout);
     }
 
 

@@ -8,8 +8,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yandeqing.stickylayout.adapter.CommonAdapter;
 import com.yandeqing.stickylayout.adapter.CommonViewHolder;
@@ -25,6 +27,8 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import ezy.ui.layout.LoadingLayout;
+
 /**
  * Created by Andy on 2017/12/26.
  */
@@ -35,6 +39,7 @@ public class TabFragment extends Fragment implements ScrollHelper.ScrollableCont
     CommonAdapter baseAdapter;
     List<String> datas = new ArrayList();
     private SmartRefreshLayout smartRefreshLayout;
+    private LoadingLayout loadingLayout;
 
     public static TabFragment newInstance() {
         return new TabFragment();
@@ -51,6 +56,7 @@ public class TabFragment extends Fragment implements ScrollHelper.ScrollableCont
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         listView = view.findViewById(R.id.scrollView);
+        loadingLayout = view.findViewById(R.id.loading_layout);
         smartRefreshLayout = (SmartRefreshLayout) view.findViewById(R.id.smartrefresh_layout);
         //设置 Header 为 Material风格
         Context context = getContext();
@@ -77,7 +83,19 @@ public class TabFragment extends Fragment implements ScrollHelper.ScrollableCont
             }
         };
         listView.setAdapter(baseAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int index = position - listView.getHeaderViewsCount();
+                if (index > -1) {
+                    Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+        });
         addDatas();
+        loadingLayout.showContent();
     }
 
     private void addDatas() {

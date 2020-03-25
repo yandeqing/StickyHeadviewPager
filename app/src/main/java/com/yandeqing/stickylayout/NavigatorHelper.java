@@ -5,8 +5,6 @@
 
 package com.yandeqing.stickylayout;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
@@ -20,7 +18,7 @@ public class NavigatorHelper {
     public NavigatorHelper() {
     }
 
-    public static void addNavigatorContent(final ViewPager fragmentViewpager, MagicIndicator tabLayout, final List<String> titles, PagerAdapter mAdapter) {
+    public static void addNavigatorContent(final ViewPager fragmentViewpager, MagicIndicator tabLayout, final List<String> titles, PagerAdapter mAdapter, final StickyLayout stickyLayout) {
         fragmentViewpager.setAdapter(mAdapter);
         fragmentViewpager.setOffscreenPageLimit(titles.size());
         CommonNavigator commonNavigator = new CommonNavigator(tabLayout.getContext());
@@ -29,6 +27,7 @@ public class NavigatorHelper {
             @Override
             public void onClickItem(int position) {
                 fragmentViewpager.setCurrentItem(position);
+                stickyLayout.scrollToTop();
             }
         };
         commonNavigator.setAdapter(commonNavigatorAdapter);
@@ -36,8 +35,6 @@ public class NavigatorHelper {
         ViewPagerHelper.bind(tabLayout, fragmentViewpager);
         fragmentViewpager.setCurrentItem(0);
     }
-
-
 
 
 }

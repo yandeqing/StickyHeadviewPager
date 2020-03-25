@@ -4,69 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.yandeqing.MainActivity">
-
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/smartrefresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <com.yandeqing.stickylayout.StickyLayout
-        android:id="@+id/stickyLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:hvp_topOffset="0dp">
-
-        <LinearLayout
+        <com.yandeqing.stickylayout.StickyLayout
+            android:id="@+id/stickyLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:hvp_topOffset="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#CCCCCC" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="center"
+                    android:text="这里是广告1"
+                    android:textSize="15dp" />
+
+                <com.yandeqing.stickylayout.collapsed.CollapsedTextView
+                    android:id="@+id/company_desctv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColor="#484848"
+                    android:textSize="12sp"
+                    android:visibility="visible"
+                    app:collapsedLines="2"
+                    app:collapsedText="收起"
+                    app:expandedText="查看更多"
+                    app:tipsClickable="true"
+                    app:tipsUnderline="false" />
+
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="#CCCCCC" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center"
-                android:text="这里是广告1"
-                android:textSize="15dp" />
-            <com.yandeqing.stickylayout.collapsed.CollapsedTextView
-                android:id="@+id/company_desctv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:textColor="#484848"
-                android:textSize="12sp"
-                android:visibility="visible"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="15dp"
-                app:collapsedLines="2"
-                app:collapsedText="收起"
-                app:expandedText="查看更多"
-                app:tipsClickable="true"
-                app:tipsUnderline="false" />
 
-        </LinearLayout>
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#CCCCCC" />
-        <net.lucode.hackware.magicindicator.MagicIndicator
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#CCCCCC" />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.yandeqing.stickylayout.StickyLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#CCCCCC" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.yandeqing.stickylayout.StickyLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 </LinearLayout>

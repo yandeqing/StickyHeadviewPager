@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/smartrefresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ListView
-        android:id="@+id/scrollView"
+
+    <ezy.ui.layout.LoadingLayout
+        android:id="@+id/loading_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ezy.ui.layout.LoadingLayout>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

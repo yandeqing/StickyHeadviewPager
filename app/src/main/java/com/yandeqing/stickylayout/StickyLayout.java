@@ -12,6 +12,7 @@ import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
+
 public class StickyLayout extends LinearLayout {
 
     private static final int DIRECTION_UP = 1;
@@ -165,7 +166,7 @@ public class StickyLayout extends LinearLayout {
         switch (ev.getAction()) {
             //Down事件主要初始化变量
             case MotionEvent.ACTION_DOWN:
-                mDisallowIntercept = false;
+//                mDisallowIntercept = false;
                 verticalScrollFlag = false;
                 mDownX = currentX;
                 mDownY = currentY;
@@ -174,7 +175,7 @@ public class StickyLayout extends LinearLayout {
                 mScroller.abortAnimation();
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (mDisallowIntercept) {
+                if (mDisallowIntercept && isClickHead) {
                     break;
                 }
                 //连续两次进入move的偏移量
@@ -321,6 +322,13 @@ public class StickyLayout extends LinearLayout {
         }
         y = toY - scrollY;
         super.scrollBy(x, y);
+    }
+
+    /**
+     *
+     */
+    public void scrollToTop() {
+        scrollBy(0, mHeadHeight);
     }
 
     /**
